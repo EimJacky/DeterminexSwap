@@ -1,14 +1,16 @@
 import express from "express";
+import { getMockQuote } from "./quoteEngine";
 
 const app = express();
 const port = 3000;
 
-app.get("/health", (req, res) => {
-    res.json({ status: "ok" });
-});
-
 app.get("/quote", (req, res) => {
-    res.json({ tokenIn: "ETH", tokenOut: "USDT", amountOut: 100 });
+    const tokenIn = req.query.tokenIn as string || "ETH";
+    const tokenOut = req.query.tokenOut as string || "USDT";
+    const amountIn = parseFloat(req.query.amountIn as string) || 1;
+
+    const quote = getMockQuote(tokenIn, tokenOut, amountIn);
+    res.json(quote);
 });
 
 app.listen(port, () => {
