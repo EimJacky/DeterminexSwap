@@ -13,6 +13,12 @@ app.get("/quote", (req, res) => {
     res.json(quote);
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
+// 只有直接运行 server.ts 才监听端口
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Server running at http://localhost:${port}`);
+    });
+}
+
+// ⚠️ 默认导出
+export default app;
