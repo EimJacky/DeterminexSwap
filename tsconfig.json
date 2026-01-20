@@ -3,10 +3,14 @@
     "target": "ES2020",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./backend/src",
+    "rootDir": "./backend", // 把 src 和 test 都包含
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "backend/src/**/*",
+    "backend/test/**/*"
+  ]
 }

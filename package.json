@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node src/server.ts",
-    "test": "jest"
+    "start": "node dist/src/server.js",
+    "dev": "ts-node backend/src/server.ts",
+    "test": "mocha -r ts-node/register backend/test/**/*.test.ts --exit",
+    "lint": "eslint backend/src/**/*.ts backend/test/**/*.ts"
   },
   "author": "Eim",
   "license": "ISC",
